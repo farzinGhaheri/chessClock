@@ -130,7 +130,7 @@ const startTimer = () => {
 function getStart() {
     start.style.color = '#EEEEEE';
     start.style.backgroundColor = '#606060';
-    start.classList.add('disabled')
+    start.style.pointerEvents='none';
     startTimer();
     swapPlayer();
 }
