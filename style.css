@@ -14,10 +14,10 @@ body {
 }
 
 .navbar .btn {
-  background-color: #B9B7BD;
+  background-color: #B9B7BD !important;
   width: 100px;
   margin-right: 10px;
-  color: #EEEDE7;
+  color: #EEEDE7 !important;
   font-weight: bold;
   font-size: calc(0.4rem + 15px);
 }

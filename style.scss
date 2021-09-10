@@ -13,10 +13,10 @@ body{
 }
 .navbar{
     .btn{
-      background-color: $third-color;
+      background-color: $third-color !important;
       width: 100px;
       margin-right:10px;
-      color: $primary-color;
+      color: $primary-color !important;
       font-weight: bold;
       font-size: calc(0.4rem + 15px)
     }
