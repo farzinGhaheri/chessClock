@@ -1,10 +1,35 @@
+@import 'variableStyle.scss';
 *{
     margin:0;
     padding:0;
 }
-main {
+body{
+    background-color: $secondary-color !important;
+    height: 100vh;
+}
+.main {
     width: 100%;
     padding: 0 10px;
+}
+.navbar{
+    .btn{
+      background-color: $third-color;
+      width: 100px;
+      margin-right:10px;
+      color: $primary-color;
+      font-weight: bold;
+      font-size: calc(0.4rem + 15px)
+    }
+    .navbar-toggler{
+        background-color: $white-color;
+    }
+    .navbar-brand{
+        color: $forth-color !important;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-left: 5px;
+        text-shadow: 2px 2px 5px black !important;
+    }
 }
 .player {
     margin: 1em 0 5px 0;
@@ -14,7 +39,7 @@ main {
     height: 300px;
     display: flex;
     margin: 0 auto;
-    color: #000000;
+    color: $primary-color;
     max-width: 400px;
     border-radius: 8px;
     align-items: center;
@@ -25,6 +50,9 @@ main {
                 inset -3px -3px 0 black, 
                 inset 3px -3px 0 black;
 }
+.player-1{
+    color: $black-color
+}
 .player-2 {
     color: #FFFFFF;
     margin-top: 5px;
@@ -34,33 +62,12 @@ main {
     font-size: calc(4rem + 15px);
     font-weight: bold;
 }
-.timer__buttons {
-    margin-bottom: 1em;
-}
-.timer__start-bttn, 
-.timer__reset-bttn {
-    width: 100%;
-    color: #020202;
-    min-height: 50px;
-    max-width: 400px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 8px;
-    letter-spacing: 2px;
-    margin: 0 auto 5px auto;
-    border: 4px solid #000000;
-}
-.timer__start-bttn {
-    color: #FFFFFF;
-    background-color: #0071D5;
-}
-
-.timer__start-bttn:hover {
-    color: #000000;
-    background-color: #FFFFFF;
-}
-
-.timer__reset-bttn:hover {
-    color: #FFFFFF;
-    background-color: #0071D5;
-}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
