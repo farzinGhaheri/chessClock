@@ -88,4 +88,15 @@ body {
   /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
+
+input {
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  width: 100%;
+  background-color: #EEEDE7;
+  color: #000;
+  text-align: left;
+  padding: 0.2rem;
+}
 /*# sourceMappingURL=style.css.map */

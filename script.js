@@ -4,7 +4,10 @@ const panel = document.querySelector('.player');
 const buttons = document.querySelectorAll('.bttn');
 let start = document.querySelector('.star');
 let player2  = document.querySelector('.ply2');
-let player1 = document.querySelector('.ply1')
+let setting = document.querySelector('.setting');
+let player1 = document.querySelector('.ply1');
+let updateMin;
+let timerId;
 // Sound effects for project.
 // const timesUp = new Audio('audio/460133__eschwabe3__robot-affirmative.wav');
 // const click = new Audio('audio/561660__mattruthsound.wav');
@@ -59,12 +62,11 @@ const startTimer = () => {
     let p1sec = 60;
     let p2sec = 60;
 
-    let timerId = setInterval(function() {
+     timerId = setInterval(function() {
         // Player 1.
 
 
         if (currentPlayer === 1) {
-            console.log('inside 1')
             if (playing) {
                 player2.style.pointerEvents='none'
                 player1.style.pointerEvents='visible'
@@ -76,7 +78,7 @@ const startTimer = () => {
                 p1sec = p1sec - 1;
                 document.getElementById('sec1').textContent = padZero(p1sec);
                 document.getElementById('min1').textContent = padZero(p1time.minutes);
-                if(p1sec === 30){
+                if(p1sec === 30 && p1time.minutes === 0){
                    return timeWarning(1, 0 , 30);
                 }
                 if (p1sec === 0) {
@@ -93,7 +95,6 @@ const startTimer = () => {
             }
         } else if(currentPlayer === 2) {
             // Player 2.
-            console.log('inside 2')
             if (playing) {
                 player1.style.pointerEvents='none'
                 player2.style.pointerEvents='visible'
@@ -105,7 +106,7 @@ const startTimer = () => {
                 p2sec = p2sec - 1;
                 document.getElementById('sec2').textContent = padZero(p2sec);
                 document.getElementById('min2').textContent = padZero(p2time.minutes);
-                if(p2sec === 30){
+                if(p2sec === 30 && p2time.minutes === 0){
                     return timeWarning(2, 0 , 30);
                  }
                 else if (p2sec === 0) {
@@ -124,6 +125,11 @@ const startTimer = () => {
     }, 1000);
 }
 
+function getNewTime(m){
+  document.getElementById('min1').textContent= m;
+  document.getElementById('min2').textContent= m;
+  localStorage.setItem('time', m);
+}
 
 // Loop through the start and reset buttons.
 
@@ -131,9 +137,20 @@ function getStart() {
     start.style.color = '#EEEEEE';
     start.style.backgroundColor = '#606060';
     start.style.pointerEvents='none';
+    setting.style.pointerEvents='none';
     startTimer();
     swapPlayer();
 }
 function restarts(){
+    // clearInterval(timerId);
     location.reload(true);
+    setTimeout(() => {
+        updateMin = parseInt(localStorage.getItem('time'))
+        console.log('minutes', updateMin)
+        document.getElementById('min1').textContent= updateMin;
+        document.getElementById('min2').textContent= updateMin;
+        document.getElementById('sec1').textContent= '00';
+        document.getElementById('sec2').textContent= '00';
+    }, 1000)
+   
 }

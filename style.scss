@@ -70,4 +70,15 @@ body{
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
-  }
+}
+input{
+    border-radius:12px;
+    outline: none;
+    border: none;
+    width: 100%;
+    background-color: $primary-color;
+    color: $black-color;
+    text-align: left;
+    padding:0.2rem;
+}
+
