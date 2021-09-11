@@ -1,6 +1,5 @@
 let playing = false;
 let currentPlayer = Number;
-const panel = document.querySelector('.player');
 const buttons = document.querySelectorAll('.bttn');
 let start = document.querySelector('.star');
 let player2  = document.querySelector('.ply2');
@@ -9,8 +8,8 @@ let player1 = document.querySelector('.ply1');
 let updateMin;
 let timerId;
 // Sound effects for project.
-// const timesUp = new Audio('audio/460133__eschwabe3__robot-affirmative.wav');
-// const click = new Audio('audio/561660__mattruthsound.wav');
+const beat = new Audio('sound/heartBeat.wav')
+const timesUp = new Audio('sound/timesUp.wav');
 
 // Add a leading zero to numbers less than 10.
 const padZero = (number) => {
@@ -26,8 +25,10 @@ const timeWarning = (player, min, sec) => {
         if (min < 1 && sec <= 30) {
             if (player === 1) {
                 document.querySelector('.player-1 .player__digits').style.color = '#CC0000';
+                beat.play()
             } else {
                 document.querySelector('.player-2 .player__digits').style.color = '#CC0000';
+                beat.play()
             }
         }
 }
@@ -52,8 +53,6 @@ const swapPlayer = () => {
     if (!playing) return;
     // Toggle the current player.
     currentPlayer = currentPlayer === 1 ? 2 : 1;
-    // Play the click sound.
-    // click.play();//need to add sound
 }
 
 // Start timer countdown to zero.
@@ -85,7 +84,7 @@ const startTimer = () => {
                     // If minutes and seconds are zero stop timer with the clearInterval method.
                     if (p1sec === 0 && p1time.minutes === 0) {
                         // Play a sound effect.
-                        // timesUp.play();// need to add sound
+                        timesUp.play();
                         // Stop timer.
                         clearInterval(timerId);
                         playing = false;
@@ -113,7 +112,7 @@ const startTimer = () => {
                     // If minutes and seconds are zero stop timer with the clearInterval method.
                     if (p2sec === 0 && p2time.minutes === 0) {
                         // Play a sound effect.
-                        // timesUp.play(); //need to add sound
+                        timesUp.play();
                         // Stop timer.
                         clearInterval(timerId);
                         playing = false;
@@ -142,7 +141,6 @@ function getStart() {
     swapPlayer();
 }
 function restarts(){
-    // clearInterval(timerId);
     location.reload(true);
     setTimeout(() => {
         updateMin = parseInt(localStorage.getItem('time'))
